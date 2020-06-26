@@ -1,0 +1,132 @@
+// standard deviation of initial wavefunc noise 
+SIG		1.0
+
+// number of spatial grid points; should be divisible by the number of computational nodes
+NUM 		128
+
+// spatial grid spacing // default unit is 1/GeV
+A		0.2
+
+// temporal grid spacing - should be <= A*A/3
+EPS		0.001
+
+// convergence tolerance for ground state energy
+TOLERANCE	1.e-6
+
+// maximum # of steps to take
+STEPS   	100000
+
+// how many steps before recording measurables
+UPDATE		100
+
+// how many steps before dumping all variables to file; "taking a snapshot"
+SNAPUPDATE	100
+
+// set to one to dump debugging files containing snapshot "slices"
+DUMPSNAPS	0
+
+// set to one to dump the full 3d wavefncs to disk at the end of the run
+SAVEWAVEFNCS	0
+
+//
+// potential to simulate
+//
+//    0  No potential (V=0); solutions to infinite-depth 3d well due to BCs
+//    1  3d square well in center of cube
+//    2  3d quad well in center of cube with short side along z-axis
+//    3  3d double well
+//    4  Radial Coulomb potential
+//    5  Elliptical Coulomb potential
+//    6  Cornell potential
+//    7  Isotropically Screened Cornell potential
+//    8  Isotropically Screened Cornell potential + Spin correction
+//    9  Anisotropically Short Distance + Isotropically Screened Cornell potential + Spin correction
+//    10 Anisotropically Screened Cornell potential (isotropic V_infty) + Spin correction
+//    11 Fully Anisotropic Screened Cornell potential + Spin correction
+//    12 Fully Anisotropic small-xi Screened Cornell potential + Spin correction
+//    13 Fully Anisotropic Screened Cornell potential + Spin correction + Modification
+//    14 Fully Anisotropic Screened Cornell potential + Spin correction + Entropy Contribution
+//    15 3d harmonic oscillator potential
+//    16 Mickey Mouse's Head
+//    17 Dodecahedron
+//    18 Complex Harmonic Oscillator
+//    19 Imaginary Couloumb
+//    20 Complex Dodecahedron
+//    21 Anisotropically Screened Quarkonium Potential with Imaginary Part
+//    22 Fit xi potential
+//    23 Fit xi potential + Imaginary Part - PRL
+//    24 Fit xi potential + Imaginary Part - NPA B (Internal Energy) - Running Coupling
+//    25 Fit xi potential + Imaginary Part - NPA A (Free Energy) - Running Coupling
+//    26 Cornell + Magnetic Field
+//    27 3D Harmonic Oscillator + Magnetic Field - Shifted
+//    28 3D Harmonic Oscillator + Magnetic Field - Not Shifted
+//    29 Coulomb + Magnetic Field
+//    30 Cornell + Magnetic Field - Untuned
+//    31 Cornell + Magnetic Field + Spin-Spin Interaction : J/Psi (J/Psi tuned)
+//    32 Cornell + Magnetic Field + Spin-Spin Interaction : J/Psi (Upsilon tuned)
+//    33 Cornell + Magnetic Field + Spin-Spin Interaction : Upsilon (Upsilon tuned)
+//    34 Cornell + Magnetic Field + Spin-Spin Interaction : J/Psi (Upsilon tuned) - Shifted
+//
+POTENTIAL	15
+
+//
+// initial condition to use
+//
+//    0         read initial condition from wavefunction_0_#.dat files in the data directory,
+//              necessary files can be generated at end of a run by turning SAVEWAVEFNCS on
+//    1 	random gaussian with std dev SIG
+//    2		coulomb-like
+//    3		constant of 0.1 in interior 
+//    4		boolean test grid; mod(i%2)mod(j%2)mod(k%2)
+//
+INITCONDTYPE	1
+
+//
+// initial symmetry constraint
+//
+//	0	None
+//	1	Symmetric about z-axis
+//	2	Antisymmetric about z-axis
+//	3	Symmetric about y-axis
+//	4	Antisymmetric about y-axis
+//
+INITSYMMETRY	0
+
+//
+// Physical parameters used in potentials
+//
+
+// Reduced mass; charmonium reduced mass is 1.29/2; bottomonium reduced mass is 4.7/2
+//MASS		0.645
+//MASS		2.35
+MASS		1.0
+
+// temperature over Tc
+T		1.01
+
+// the critical temperature in GeV
+TC		0.192
+
+// string tension in units GeV^2
+//SIGMA		0.223
+// tuned to J/Psi - potentials 31
+SIGMA		0.174
+// tuned to Upsilon - potentials 32 and 33
+//SIGMA		0.210
+
+// number of contributing quark flavors
+NF		2
+
+// plasma anisotropy parameter
+XI		1	
+
+// e times magnetic field in units of GeV^2
+eB		0
+
+// pseudo-momentum in x direction in units of GeV
+Kx		0
+
+// spin-spin expectation value:  -3/4 for singlet, 1/4 for triplet
+SPINEXP 	0
+//SPINEXP 	-0.75
+//SPINEXP 	0.25

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#PBS -N "sfdtd"
+#
+# The job needs at most xx:xx:xx 'hours' wall-clock time on nodes*ppn cpus
+#PBS -l walltime=02:00:00,nodes=5:ppn=4
+#
+# Send me an email on a=abort, b=begin, e=end
+#PBS -m ae
+#
+# Write the standard output of the job to file 'job.out'
+#PBS -o /home/fias/strickland/runs/sfdtd/mpisolve.out
+#
+# Write the standard error of the job to file 'job.err'
+#PBS -e /home/fias/strickland/runs/sfdtd/mpisolve.err
+
+cd /home/fias/strickland/runs/sfdtd/
+./cleandatafiles.sh
+/usr/local/Cluster-Apps/mpich/mx/gcc/64/1.2.6..0.94/bin/mpirun -machinefile $PBS_NODEFILE -np 17 mpisolve -T temperature -XI anisoparameter
